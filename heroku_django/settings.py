@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_markdown',
     'blog',
 )
 
@@ -107,6 +108,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+MARKDOWN_EDITOR_SKIN = 'simple'
+MARKDOWN_EXTENSIONS = ['extra']
 
 
 STATIC_ROOT = 'staticfiles'
