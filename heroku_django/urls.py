@@ -1,4 +1,4 @@
-"""heroku_django URL Configuration
+"""blackmill URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from heroku_django import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include("blog.url",namespace="blog")),
+    url('^markdown/', include( 'django_markdown.urls')),
+]
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
 ]

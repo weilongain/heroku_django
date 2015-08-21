@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+{% block index %}
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="logo" src="{% static 'img/logo.png' %}" alt="theBLOG">
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container container-main">
+    {% include "nav.html" %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="well blog-post">
+          <h3><a href="{% url 'blog:blogpost' pk=queryset.id %}">{{ queryset.tittle }}</a></h3>
+          <p class="post-info"><i class="glyphicon glyphicon-time"></i> 發表於 {{ queryset.postime.month }}月{{ queryset.postime.day }}日 {{ queryset.postime.year }}年</p>
+          <hr>
+          <img src="{{ queryset.img.url }}" class="img-responsive">
+          <hr>
+          {{ queryset.body }}
+        </div>
+
+
+      </div>
+    {% include "bar.html" %}
+    </div>
+    </div>
+
+
+{% endblock %}
