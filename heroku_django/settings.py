@@ -14,9 +14,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DATABASES["default"] = dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -27,6 +27,7 @@ SECRET_KEY = 'i4x8uv)4oef#safcg6h1$7$e51+sxwtt85ptp5=dv=mhx0agv&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ["*"]
@@ -106,11 +107,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 
-STATIC_ROOT = "staticfile"
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,"static")
-
+    os.path.join(BASE_DIR, 'static'),
 )
 
